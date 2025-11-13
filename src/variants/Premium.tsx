@@ -1,5 +1,5 @@
 import { useState, FormEvent, useEffect } from 'react'
-import { Check, ArrowRight, Zap, Layers, Video, Download, BarChart3, FileText, TrendingUp, Users, Shield } from 'lucide-react'
+import { Check, ArrowRight, Layers, Video, Download, BarChart3, FileText, TrendingUp, Users, Shield } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
 import { Input } from '@/components/ui/Input'
 import { Footer } from '@/components/layout/Footer'
