@@ -1,0 +1,148 @@
+import { Meta } from '@storybook/blocks'
+
+<Meta title="Design System/Introduction" />
+
+# 1000 Videos Design System
+
+Welcome to the **1000 Videos** design system documentation. This Storybook contains all the design tokens, components, and guidelines for building consistent, accessible, and beautiful landing pages.
+
+## Overview
+
+The 1000 Videos design system supports **4 distinct design variants**, each targeting a different audience:
+
+### 🎨 Neo-Brutalist (Teal & Purple)
+Bold, anti-corporate aesthetic for Gen-Z creators and the creator economy.
+- **Colors**: Vibrant teal (`#2DD4BF`) and purple (`#A855F7`)
+- **Typography**: Space Grotesk (headings), bold and uppercase
+- **Visual Style**: 4px borders, hard shadows, minimal rounding
+- **Target Audience**: Young creators, TikTok/YouTube personalities
+
+### ✨ Modern/Clean (Coral & Amber)
+Premium SaaS aesthetic with soft gradients and glass-morphism.
+- **Colors**: Warm coral (`#FF7A63`) and amber (`#FBBF24`) gradients
+- **Typography**: Plus Jakarta Sans (headings), elegant and refined
+- **Visual Style**: Generous rounding, soft shadows, backdrop blur
+- **Target Audience**: Professional content creators
+
+### 🎬 Production Studio (Dark Theme)
+Sophisticated dark theme with minimal color for serious professionals.
+- **Colors**: Very dark backgrounds with blue accent for CTAs only
+- **Typography**: Inter Display (headings), clean and modern
+- **Visual Style**: Minimal shadows, 1px borders, Netflix-esque
+- **Target Audience**: Professional video studios, enterprises
+
+### 💎 Premium (Indigo & Cyan)
+Enterprise-grade design with premium gradients and effects.
+- **Colors**: Rich indigo (`#818CF8`) to cyan (`#06B6D4`) gradients
+- **Typography**: Plus Jakarta Sans (headings), sophisticated
+- **Visual Style**: Premium shadows, backdrop blur, polished
+- **Target Audience**: Enterprise customers, serious businesses
+
+## Design Tokens
+
+All design decisions are codified as **design tokens** in `tailwind.config.ts`:
+
+### Colors
+- Primary colors (shared)
+- Variant-specific palettes
+- Semantic colors (success, danger)
+
+### Typography
+- Font families
+- Type scale (7xl → xs)
+- Font weights
+- Line heights
+
+### Spacing
+- Spacing scale (xs → 3xl)
+- Padding & margin patterns
+- Gap utilities
+
+### Effects
+- Shadows (brutalist, modern, premium)
+- Border radius tokens
+- Backdrop blur effects
+
+## Component Library
+
+Reusable UI components styled for each variant:
+
+- **Buttons**: Primary, secondary, with icons, sizes
+- **Inputs**: Text fields, email, with validation states
+- **Cards**: Feature cards, stat cards, content cards
+- **Badges**: Labels, tags, status indicators
+
+## Using This Design System
+
+### For Designers
+1. Browse the **Colors** section to understand color palettes
+2. Review **Typography** for text styles and hierarchy
+3. Check **Spacing** for layout patterns
+4. Explore **Components** for UI element patterns
+
+### For Developers
+1. All design tokens are in `tailwind.config.ts`
+2. Use Tailwind utility classes matching the tokens
+3. Reference component examples for implementation patterns
+4. Follow variant-specific guidelines for consistency
+
+### For Product Managers
+1. Each variant targets a different audience segment
+2. Use A/B testing to determine which variant converts best
+3. Consider audience demographics when choosing variants
+4. All variants share the same technical foundation
+
+## Installation
+
+To run this Storybook locally:
+
+```bash
+# Install Storybook dependencies
+npm install --save-dev @storybook/react-vite @storybook/addon-links @storybook/addon-essentials @storybook/addon-interactions storybook
+
+# Start Storybook
+npm run storybook
+```
+
+## Best Practices
+
+### Consistency
+- Stay within the design token system
+- Don't create custom colors or spacing values
+- Use variant-appropriate components
+
+### Accessibility
+- Maintain WCAG AA contrast ratios (4.5:1 for text)
+- Provide focus states for all interactive elements
+- Ensure keyboard navigation works
+
+### Performance
+- Use system fonts when possible
+- Optimize images and assets
+- Minimize bundle size
+
+### Responsiveness
+- Design mobile-first
+- Test on real devices
+- Use Tailwind's responsive utilities
+
+## Resources
+
+- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
+- [React Documentation](https://react.dev)
+- [Vite Documentation](https://vitejs.dev)
+- [Storybook Documentation](https://storybook.js.org)
+
+## Getting Started
+
+👈 Use the sidebar to explore:
+- **Colors**: Complete color palette documentation
+- **Typography**: Font families, scales, and weights
+- **Spacing**: Spacing system and shadows
+- **Components**: UI component library
+
+---
+
+**Version**: 0.1.0 (Early Access)
+**Last Updated**: 2025-01
+**Maintained by**: 1000 Videos Design Team
