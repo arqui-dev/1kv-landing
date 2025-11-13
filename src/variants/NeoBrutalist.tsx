@@ -71,7 +71,7 @@ export function NeoBrutalist() {
                 className="bg-primary text-white border-4 border-black shadow-brutalist hover:translate-x-1 hover:translate-y-1 hover:shadow-brutalist-sm font-bold uppercase rounded-sm relative"
               >
                 Start Trial
-                <span className="absolute -top-2 -right-2 bg-brutalist-accent text-black text-xs px-2 py-1 border-2 border-black font-black rotate-3">
+                <span className="absolute -top-2 -right-2 bg-brutalist-teal text-black text-xs px-2 py-1 border-2 border-black font-black rotate-3">
                   EARLY ACCESS
                 </span>
               </Button>
@@ -113,7 +113,7 @@ export function NeoBrutalist() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <div className="inline-block mb-6">
-                <span className="bg-brutalist-accent text-black px-4 py-2 border-4 border-black shadow-brutalist font-black text-sm uppercase rotate-[-2deg] inline-block">
+                <span className="bg-brutalist-purple text-white px-4 py-2 border-4 border-black shadow-brutalist font-black text-sm uppercase rotate-[-2deg] inline-block">
                   NEW
                 </span>
               </div>
@@ -161,15 +161,16 @@ export function NeoBrutalist() {
             </div>
 
             <div className="relative">
-              <div className="border-4 border-black shadow-brutalist bg-white p-2">
-                <img
-                  src="/app-screenshot.png"
-                  alt="1kvideos Desktop App"
-                  className="w-full h-auto"
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="800" height="600"%3E%3Crect fill="%23e5e5e5" width="800" height="600"/%3E%3Ctext fill="%23666" x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" font-size="24"%3EApp Screenshot%3C/text%3E%3C/svg%3E'
-                  }}
-                />
+              <div className="border-4 border-black shadow-brutalist bg-black">
+                <div className="relative pb-[56.25%]">
+                  <iframe
+                    src="https://www.youtube.com/embed/LhzpLcKmJRY"
+                    title="1kvideos App Demo"
+                    className="absolute top-0 left-0 w-full h-full"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -220,7 +221,7 @@ export function NeoBrutalist() {
                 key={index}
                 className="border-4 border-black bg-white p-6 shadow-brutalist hover:translate-x-1 hover:translate-y-1 hover:shadow-brutalist-sm transition-transform"
               >
-                <div className="bg-brutalist-accent w-16 h-16 rounded-full border-4 border-black flex items-center justify-center shadow-brutalist-sm rotate-3 mb-4">
+                <div className="bg-brutalist-teal w-16 h-16 rounded-full border-4 border-black flex items-center justify-center shadow-brutalist-sm rotate-3 mb-4">
                   {feature.icon}
                 </div>
                 <h4 className="text-2xl font-black font-space-grotesk mb-3">{feature.title}</h4>
@@ -258,7 +259,7 @@ export function NeoBrutalist() {
             ].map((item, index) => (
               <div key={index} className={`flex flex-col ${index % 2 === 1 ? 'md:flex-row-reverse' : 'md:flex-row'} items-center gap-8`}>
                 <div className="flex-1">
-                  <div className="bg-brutalist-accent text-black w-20 h-20 rounded-full border-4 border-black flex items-center justify-center shadow-brutalist mb-4">
+                  <div className="bg-brutalist-purple text-white w-20 h-20 rounded-full border-4 border-black flex items-center justify-center shadow-brutalist mb-4">
                     <span className="text-4xl font-black font-jetbrains">{item.step}</span>
                   </div>
                   <h4 className="text-3xl font-black font-space-grotesk mb-4">{item.title}</h4>
@@ -316,7 +317,7 @@ export function NeoBrutalist() {
                 size="lg"
               >
                 SUBSCRIBE NOW
-                <span className="absolute -top-3 -right-3 bg-brutalist-accent text-black text-xs px-3 py-1 border-2 border-black font-black rotate-6">
+                <span className="absolute -top-3 -right-3 bg-brutalist-teal text-black text-xs px-3 py-1 border-2 border-black font-black rotate-6">
                   LIMITED SPOTS
                 </span>
               </Button>

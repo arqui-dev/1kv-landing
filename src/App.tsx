@@ -2,13 +2,14 @@ import { useEffect, useState } from 'react'
 import { NeoBrutalist } from './variants/NeoBrutalist'
 import { Modern } from './variants/Modern'
 import { ProductionStudio } from './variants/ProductionStudio'
+import { Premium } from './variants/Premium'
 import { NeoBrutalistPTBR } from './variants/pt-br/NeoBrutalistPTBR'
 import { ModernPTBR } from './variants/pt-br/ModernPTBR'
 import { ProductionStudioPTBR } from './variants/pt-br/ProductionStudioPTBR'
 import { analytics } from './lib'
 import './styles/globals.css'
 
-type Variant = 'neo_brutalist' | 'modern' | 'production_studio' | 'neo_brutalist_ptbr' | 'modern_ptbr' | 'production_studio_ptbr'
+type Variant = 'neo_brutalist' | 'modern' | 'production_studio' | 'premium' | 'neo_brutalist_ptbr' | 'modern_ptbr' | 'production_studio_ptbr'
 
 function App() {
   const [variant, setVariant] = useState<Variant>('production_studio')
@@ -18,7 +19,7 @@ function App() {
     const urlParams = new URLSearchParams(window.location.search)
     const variantParam = urlParams.get('variant') as Variant
 
-    if (variantParam && ['neo_brutalist', 'modern', 'production_studio', 'neo_brutalist_ptbr', 'modern_ptbr', 'production_studio_ptbr'].includes(variantParam)) {
+    if (variantParam && ['neo_brutalist', 'modern', 'production_studio', 'premium', 'neo_brutalist_ptbr', 'modern_ptbr', 'production_studio_ptbr'].includes(variantParam)) {
       setVariant(variantParam)
       analytics.setVariant(variantParam)
     } else {
@@ -62,6 +63,8 @@ function App() {
       return <Modern />
     case 'production_studio':
       return <ProductionStudio />
+    case 'premium':
+      return <Premium />
     case 'neo_brutalist_ptbr':
       return <NeoBrutalistPTBR />
     case 'modern_ptbr':

@@ -7,7 +7,7 @@ const TELEGRAM_CHANNEL = import.meta.env.VITE_TELEGRAM_CHANNEL || ''
 const SUPPORT_EMAIL = import.meta.env.VITE_SUPPORT_EMAIL || 'support@1kvideos.com'
 
 interface ContactWidgetProps {
-  variant: 'neo_brutalist' | 'modern' | 'production_studio'
+  variant: 'neo_brutalist' | 'modern' | 'production_studio' | 'premium'
 }
 
 export function ContactWidget({ variant }: ContactWidgetProps) {
@@ -43,6 +43,12 @@ export function ContactWidget({ variant }: ContactWidgetProps) {
           button: 'bg-studio-bg-elevated text-studio-foreground border border-primary/50 hover:border-primary shadow-lg',
           container: 'bg-studio-bg-elevated border border-studio-foreground/10 shadow-xl',
           link: 'bg-studio-bg-card text-studio-foreground hover:bg-primary hover:text-white border border-studio-foreground/10',
+        }
+      case 'premium':
+        return {
+          button: 'bg-gradient-to-br from-premium-indigo to-premium-cyan text-white shadow-premium hover:shadow-premium-lg hover:scale-105 rounded-full',
+          container: 'bg-white/90 backdrop-blur-xl shadow-premium-lg rounded-2xl border border-premium-indigo/20',
+          link: 'bg-gradient-to-r from-premium-indigo to-premium-cyan text-white rounded-xl hover:scale-105 hover:shadow-premium',
         }
     }
   }
