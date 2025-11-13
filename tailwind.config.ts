@@ -14,18 +14,23 @@ export default {
           light: 'hsl(214, 100%, 66%)',
           dark: 'hsl(214, 84%, 40%)',
         },
-        // Neo-Brutalist
+        // Neo-Brutalist (Teal & Purple)
         brutalist: {
-          accent: 'hsl(48, 100%, 50%)',
-          'accent-dark': 'hsl(48, 100%, 40%)',
+          teal: 'hsl(174, 72%, 56%)',
+          'teal-dark': 'hsl(174, 72%, 40%)',
+          purple: 'hsl(271, 76%, 53%)',
+          'purple-dark': 'hsl(271, 76%, 40%)',
           success: 'hsl(120, 100%, 40%)',
           danger: 'hsl(0, 100%, 50%)',
         },
-        // Modern/Clean
+        // Modern/Clean (Orange & Purple)
         modern: {
-          coral: 'hsl(15, 85%, 55%)',
-          'coral-light': 'hsl(15, 90%, 65%)',
-          amber: 'hsl(45, 95%, 50%)',
+          orange: 'hsl(25, 95%, 53%)',
+          'orange-light': 'hsl(25, 95%, 63%)',
+          'orange-dark': 'hsl(25, 95%, 43%)',
+          purple: 'hsl(271, 76%, 53%)',
+          'purple-light': 'hsl(271, 76%, 63%)',
+          'purple-dark': 'hsl(271, 76%, 43%)',
           muted: 'hsl(220, 13%, 60%)',
         },
         // Production Studio

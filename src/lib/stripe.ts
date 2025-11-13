@@ -38,7 +38,6 @@ export async function redirectToCheckout(email?: string) {
       successUrl: `${window.location.origin}/success?session_id={CHECKOUT_SESSION_ID}`,
       cancelUrl: window.location.origin,
       customerEmail: email,
-      allowPromotionCodes: true,
     })
 
     if (error) {
