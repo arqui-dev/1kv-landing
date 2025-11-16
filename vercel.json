@@ -1,5 +1,5 @@
 {
-  "buildCommand": "npm run build",
+  "buildCommand": "if [ \"$VERCEL_PROJECT_ID\" = \"prj_NHVz4ycEwC29Z3FjD7KdCdEw4u4T\" ]; then npm run build-storybook && mv storybook-static dist; else npm run build; fi",
   "outputDirectory": "dist",
   "framework": "vite",
   "rewrites": [
