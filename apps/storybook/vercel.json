@@ -16,7 +16,7 @@
         },
         {
           "key": "Content-Security-Policy",
-          "value": "frame-ancestors https://1kv-landing.vercel.app https://1kvideos.com https://www.1kvideos.com http://localhost:5173;"
+          "value": "frame-ancestors 'self' https://*.vercel.app https://1kvideos.com https://www.1kvideos.com https://*.1kvideos.com http://localhost:5173;"
         }
       ]
     }
