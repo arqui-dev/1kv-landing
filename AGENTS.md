@@ -1,37 +1,84 @@
 # AGENTS.md
 
-Este arquivo fornece orientações para agentes de IA (como Claude Code) ao trabalhar com código neste repositório.
-
-## Visão Geral do Projeto
-
-Este é um projeto de landing pages para **1000 Vídeos (1kvideos)** - um aplicativo desktop que ajuda criadores de conteúdo a gerar vídeos faceless em escala (10x mais rápido que métodos manuais).
-
-**Nome do Produto:** 1000 Videos (1kvideos)
-**Versão:** v0.1.0 (Fase Early Adopter)
-**Preço:** R$ 89,90 por 3 meses (oferta early bird especial)
-**Público-Alvo:** Criadores de conteúdo que fazem vídeos faceless (comentários de notícias, conteúdo educacional, canais com IA voiceover)
+This file provides guidance to AI coding agents (Claude Code, Cursor, GitHub Copilot, etc.) when working with code in this repository.
 
 ---
 
-## Stack Técnico
+## Documentation Structure
 
-### Tecnologias Principais
+This repository uses a structured documentation approach to serve both AI agents and human developers:
+
+### Documentation Hierarchy
+
+```
+/
+├── AGENTS.md (this file)          # Quick reference for AI agents
+├── README.md                       # Project overview and setup
+└── docs/                          # Comprehensive documentation
+    ├── ai/                        # AI agent-specific guides
+    │   ├── workflows/             # Common development workflows
+    │   ├── architecture/          # Deep-dive architecture docs
+    │   └── context/               # Additional context files
+    └── dev/                       # Human developer documentation
+        ├── guides/                # Step-by-step guides
+        ├── api/                   # API references
+        └── troubleshooting/       # Common issues and solutions
+```
+
+### How to Use Documentation
+
+**For AI Agents:**
+- Start with this file (AGENTS.md) for quick reference
+- Consult `/docs/ai/` for detailed workflows and architecture
+- Use `/docs/ai/context/` for additional project context
+
+**For Human Developers:**
+- Start with README.md for setup instructions
+- Refer to `/docs/dev/guides/` for comprehensive tutorials
+- Check `/docs/dev/troubleshooting/` when encountering issues
+
+---
+
+## Project Overview
+
+1000 Videos (1kvideos) landing page variants - a React + TypeScript + Vite application showcasing multiple professionally designed landing page variants for a desktop application that creates faceless videos at scale.
+
+**Product:** 1000 Videos (1kvideos)
+**Version:** v0.1.0 (Early Adopter Phase)
+**Target Audience:** Content creators making faceless videos (news commentary, educational content, AI voiceover channels)
+
+### Pricing by Region
+
+**PT-BR (Brazil):**
+- Early Bird: R$ 89,90 for 3 months
+- Regular: R$ 197/month
+
+**EN-US (International):**
+- Early Adopter: $20/month
+- Regular: $49/month
+
+---
+
+## Technical Stack
+
+### Core Technologies
 - **Frontend:** React 18 + TypeScript + Vite
-- **Estilização:** Tailwind CSS (com tokens de design personalizados)
+- **Styling:** Tailwind CSS (with custom design tokens)
 - **Backend:** Supabase
-  - Autenticação (OAuth + email)
-  - Banco de dados PostgreSQL (dados de usuário, waitlist, eventos de analytics)
-  - Storage (para assets enviados)
-- **Pagamentos:** Stripe
-  - Checkout de assinatura (recorrente R$ 89,90/3 meses)
-  - Link para portal de billing
-  - Handlers de webhook para eventos de assinatura
-- **Comunicação:**
-  - WhatsApp Business API (botão "entrar em contato")
-  - Telegram (link da comunidade)
-  - Email (SendGrid ou Resend para notificações)
+  - Authentication (OAuth + email)
+  - PostgreSQL database (user data, waitlist, analytics events)
+  - Storage (for uploaded assets)
+- **Payments:** Stripe
+  - Subscription checkout
+  - Billing portal link
+  - Webhook handlers for subscription events
+- **Communication:**
+  - WhatsApp Business API (contact button)
+  - Telegram (community link)
+  - Email (SendGrid or Resend for notifications)
+- **Design System:** Storybook (runs on port 6006)
 
-### Estrutura do Projeto
+### Project Structure
 ```
 1kv-landing/
 ├── src/
@@ -74,155 +121,274 @@ Este é um projeto de landing pages para **1000 Vídeos (1kvideos)** - um aplica
 
 ---
 
-## Variantes de Design
+## Design Variants
 
-### 3 Estilos Diferentes x 2 Idiomas = 6 Landing Pages
+### 4 Design Styles × 2 Languages = 8+ Landing Pages
 
-#### Variante 1: Neo-Brutalist (Teal & Purple)
-- **Design:** Estética ousada e anti-corporativa com bordas duras e alto contraste
-- **Público:** Criadores Gen-Z e economia criadora
-- **Cores:** Teal vibrante (`hsl(174, 72%, 56%)`) e Purple (`hsl(271, 76%, 53%)`)
-- **Tipografia:** Space Grotesk (títulos), Inter (corpo), JetBrains Mono (stats)
-- **Características:**
-  - Bordas pretas de 3-4px em todos os cards, botões, inputs
-  - Sombras duras e deslocadas (sem blur)
-  - Rotação leve em badges e callout boxes (-2deg a 2deg)
-  - Cantos minimamente arredondados
+The application uses a URL-parameter-based variant system. Access variants via `?variant=variant_name`.
 
-#### Variante 2: Modern/Clean (Orange & Purple)
-- **Design:** Estética premium SaaS com gradientes suaves e glass-morphism
-- **Público:** Criadores de conteúdo profissionais
-- **Cores:** Orange (`hsl(25, 95%, 53%)`) e Purple (`hsl(271, 76%, 53%)`)
-- **Tipografia:** Plus Jakarta Sans (títulos), Inter (corpo)
-- **Características:**
-  - Bordas sutis de 1px ou sem bordas
-  - Sombras suaves e em camadas com brilho
-  - Cantos generosamente arredondados (rounded-2xl)
-  - Glass-morphism com backdrop-blur
-  - Animações suaves (hover scale 1.02-1.05)
+#### Variant 1: Neo-Brutalist (Teal & Purple)
+- **Design:** Bold, anti-corporate aesthetic with hard edges and high contrast
+- **Target:** Gen-Z creators and creator economy
+- **Colors:** Vibrant Teal (`hsl(174, 72%, 56%)`) and Purple (`hsl(271, 76%, 53%)`)
+- **Typography:** Space Grotesk (headings), Inter (body), JetBrains Mono (stats)
+- **Features:**
+  - Black borders (3-4px) on all cards, buttons, inputs
+  - Hard offset shadows (no blur)
+  - Slight rotation on badges and callout boxes (-2deg to 2deg)
+  - Minimal corner rounding
 
-#### Variante 3: Production Studio (Dark Theme)
-- **Design:** Elegância monocromática com acentos azuis estratégicos
-- **Público:** Criadores de vídeo sérios e profissionais
-- **Cores:** Tema escuro com blue accent (`hsl(214, 84%, 56%)`) apenas para CTAs
-- **Tipografia:** Inter Display (títulos), Inter (corpo), Monospace (stats)
-- **Características:**
-  - Fundo muito escuro (`hsl(220, 13%, 12%)`)
-  - Uso mínimo de cor (azul apenas para CTAs)
-  - Bordas de 1px com baixa opacidade
-  - Sombras mínimas
+#### Variant 2: Modern/Clean (Coral & Amber)
+- **Design:** Premium SaaS aesthetic with soft gradients and glass-morphism
+- **Target:** Professional content creators
+- **Colors:** Coral (`hsl(11, 93%, 64%)`) and Amber (`hsl(38, 92%, 50%)`)
+- **Typography:** Plus Jakarta Sans (headings), Inter (body)
+- **Features:**
+  - Subtle 1px borders or no borders
+  - Soft layered shadows with glow
+  - Generously rounded corners (rounded-2xl)
+  - Glass-morphism with backdrop-blur
+  - Smooth animations (hover scale 1.02-1.05)
+
+#### Variant 3: Production Studio (Dark Theme) ⭐ **Default**
+- **Design:** Monochrome elegance with strategic blue accents
+- **Target:** Serious video creators and professionals
+- **Colors:** Dark theme with blue accent (`hsl(214, 84%, 56%)`) only for CTAs
+- **Typography:** Inter Display (headings), Inter (body), Monospace (stats)
+- **Features:**
+  - Very dark background (`hsl(220, 13%, 12%)`)
+  - Minimal color usage (blue for CTAs only)
+  - 1px borders with low opacity
+  - Minimal shadows
   - Netflix-esque sophistication
 
+#### Variant 4: Premium (Indigo & Cyan)
+- **Design:** Premium gradients with glass-morphism
+- **Target:** Enterprise customers
+- **Colors:** Indigo (`hsl(239, 84%, 67%)`) and Cyan (`hsl(189, 94%, 43%)`)
+- **Typography:** Plus Jakarta Sans (headings), Inter (body)
+- **Features:**
+  - Premium shadows with backdrop blur
+  - Gradient backgrounds
+  - Sophisticated color palette
+
+### Language Support
+
+**Accessing variants:**
+- English: `?variant=neo_brutalist`, `?variant=modern`, `?variant=production_studio`, `?variant=premium`
+- Portuguese: `?variant=neo_brutalist_ptbr`, `?variant=modern_ptbr`, `?variant=production_studio_ptbr`
+
 ---
 
-## Idiomas e Preços
+## Mock System Architecture
 
-### PT-BR (Português Brasil)
-- **Preço:** R$ 89,90 por 3 meses
-- **Preço Regular:** R$ 197/mês (após período early bird)
-- **Moeda:** BRL (Real Brasileiro)
-- **Duração Especial:** 3 meses
+### Auto-Detection
+The app automatically detects if backend credentials are available:
+- **No credentials?** → Uses mock implementations (perfect for testing designs)
+- **With credentials?** → Uses real Stripe/Supabase
 
-### EN-US (English)
-- **Preço:** $20/mês
-- **Preço Regular:** $49/mês
-- **Moeda:** USD
-- **Duração:** Mensal
+**File:** `src/lib/index.ts`
 
----
-
-## Sistema de Mocks
-
-### Auto-Detecção
-O app detecta automaticamente se credenciais de backend estão disponíveis:
-- **Sem credenciais?** → Usa implementações mock (perfeito para testar designs)
-- **Com credenciais?** → Usa Stripe/Supabase reais
-
-**Arquivo:** `src/lib/index.ts`
-
-### Implementações Mock
-Todos os mocks simulam comportamento real:
-- **Stripe Mock** (`stripe.mock.ts`): Dialog de confirmação + redirecionamento
-- **Supabase Mock** (`supabase.mock.ts`): Storage in-memory + validação
+### Mock Implementations
+All mocks simulate real behavior:
+- **Stripe Mock** (`stripe.mock.ts`): Confirmation dialog + redirection
+- **Supabase Mock** (`supabase.mock.ts`): In-memory storage + validation
 - **Analytics Mock** (`analytics.mock.ts`): Console logging + tracking
 
-**Modo Mock Ativo:**
+**Mock Mode Active:**
 ```
 🎨 DESIGN PREVIEW MODE: Using mock implementations
 📝 No backend setup required - perfect for testing designs!
 ```
 
----
-
-## Integração de Vídeo
-
-Todas as variantes incluem embed do vídeo de demonstração no Hero:
-- **URL:** `https://www.youtube.com/embed/LhzpLcKmJRY`
-- **Aspect Ratio:** 16:9 (56.25% padding-bottom)
-- **Bordas:** Estilizadas de acordo com a variante
-- **Responsivo:** Funciona em mobile, tablet e desktop
+This allows rapid design iteration without backend setup.
 
 ---
 
-## Comandos Comuns
+## Common Development Commands
 
-### Aplicativo Landing (1kv-landing)
-
+### Development
 ```bash
 # Setup
-cd 1kv-landing
 npm install
 
-# Desenvolvimento
-npm run dev          # Inicia dev server (http://localhost:5173)
-npm run build        # Build para produção
-npm run preview      # Preview do build de produção
-npm run lint         # Verificar qualidade do código
+# Start development server (http://localhost:5173)
+npm run dev
 
-# Testar variantes
-# PT-BR Neo-Brutalist: http://localhost:5173?variant=neo_brutalist_ptbr
-# PT-BR Modern: http://localhost:5173?variant=modern_ptbr
-# PT-BR Production: http://localhost:5173?variant=production_studio_ptbr
-# EN-US Neo-Brutalist: http://localhost:5173?variant=neo_brutalist
-# EN-US Modern: http://localhost:5173?variant=modern
-# EN-US Production: http://localhost:5173 (padrão)
+# Type check
+tsc --noEmit
+
+# Lint code
+npm run lint
+
+# Run Storybook design system (http://localhost:6006)
+npm run storybook
+```
+
+### Building
+```bash
+# Type check and build for production
+npm run build
+
+# Preview production build locally
+npm run preview
+
+# Build Storybook
+npm run build-storybook
+```
+
+### Testing Variants
+```bash
+# EN-US variants
+http://localhost:5173?variant=neo_brutalist
+http://localhost:5173?variant=modern
+http://localhost:5173?variant=production_studio  # default
+http://localhost:5173?variant=premium
+
+# PT-BR variants
+http://localhost:5173?variant=neo_brutalist_ptbr
+http://localhost:5173?variant=modern_ptbr
+http://localhost:5173?variant=production_studio_ptbr
 ```
 
 ---
 
-## Padrões de Desenvolvimento
+## Key Architecture Concepts
 
-### Adicionando Nova Variante
+### Variant System Flow
+1. URL parameter checked in `App.tsx` (`useEffect` on mount)
+2. Variant stored in component state and localStorage
+3. Analytics system automatically tracks variant for all events
+4. IntersectionObserver set up to track section views (50% threshold)
 
-1. Criar arquivo de variante:
-```typescript
-// src/variants/NovaVariante.tsx
-import { Button } from '@/components/ui/Button'
-import { redirectToCheckout, analytics } from '@/lib'
+**Key files:**
+- `src/App.tsx` - Main entry point, variant detection and routing
+- `src/variants/` - Each variant implementation
+- `src/variants/pt-br/` - Portuguese translations
 
-export function NovaVariante() {
-  // Implementação
-}
+### Analytics Architecture
+
+Custom analytics system tracking user interactions to Supabase:
+
+**Tracked Events:**
+- `page_view` - Initial page load
+- `section_view` - When 50%+ of section is visible
+- `cta_click` - CTA button clicks with location metadata
+- `contact_widget_open` - Contact widget expansion
+- `contact_channel_click` - WhatsApp/Telegram/Email clicks
+- `waitlist_signup` - Email capture submissions
+- `checkout_initiated` - Stripe checkout opened
+- `checkout_completed` - Successful subscription
+- `checkout_cancelled` - User returned without completing
+
+**Implementation:**
+- `src/lib/analytics.ts` - Core analytics class with session tracking
+- Events include metadata: session_id, timestamp, user_agent, screen dimensions
+- Variant automatically attached to all events
+
+**Query Analytics (Supabase SQL):**
+```sql
+-- Most clicked CTAs
+SELECT
+  metadata->>'button_text' as button,
+  metadata->>'location' as location,
+  COUNT(*) as clicks
+FROM analytics_events
+WHERE event_name = 'cta_click'
+GROUP BY button, location
+ORDER BY clicks DESC;
+
+-- Variant performance
+SELECT
+  variant,
+  COUNT(DISTINCT metadata->>'session_id') as unique_visitors,
+  SUM(CASE WHEN event_name = 'checkout_initiated' THEN 1 ELSE 0 END) as checkouts,
+  SUM(CASE WHEN event_name = 'checkout_completed' THEN 1 ELSE 0 END) as conversions
+FROM analytics_events
+GROUP BY variant;
 ```
 
-2. Adicionar ao roteamento em `App.tsx`:
-```typescript
-case 'nova_variante':
-  return <NovaVariante />
-```
+### Database Schema
 
-3. Adicionar cores ao `tailwind.config.ts` se necessário
+Supabase PostgreSQL (`supabase/migrations/001_initial_schema.sql`):
 
-### Customizando Conteúdo
+**Tables:**
+1. `users` - User accounts with Stripe integration
+   - Columns: `stripe_customer_id`, `subscription_status`, `subscription_id`
+   - Row-level security enabled (service role only)
 
-Editar diretamente nos arquivos de variante:
+2. `waitlist` - Pre-purchase email capture
+   - Tracks which variant the user saw
+   - Public insert policy for form submissions
+
+3. `analytics_events` - Event tracking
+   - JSONB metadata field for flexible event data
+   - Public insert policy for client-side tracking
+   - Indexes on `event_name` and `variant`
+
+### Component Architecture
+
+**Shared UI Components** (`src/components/ui/`):
+- `Button.tsx` - Variants: primary, secondary, outline | Sizes: sm, md, lg
+- `Input.tsx` - Form input with error state support
+
+**Layout Components** (`src/components/layout/`):
+- `Footer.tsx` - Variant-aware footer
+- `ContactWidget.tsx` - Floating contact widget (WhatsApp/Telegram/Email)
+
+**Variant Components** (`src/variants/`):
+Self-contained landing pages with their own header, sections, and styling.
+
+### Stripe Integration Flow
+
+1. User clicks CTA → `redirectToCheckout()` called from variant
+2. Stripe Checkout loads with pre-configured subscription
+3. Success → redirects to `/success?session_id={CHECKOUT_SESSION_ID}`
+4. Cancel → returns to landing page
+5. Analytics tracked at each step
+
+**Success page** (`src/pages/Success.tsx`):
+- Shows download links (Windows, macOS, Linux)
+- Displays next steps and support options
+- Tracks `checkout_completed` event
+
+---
+
+## Development Workflows
+
+### Adding a New Variant
+
+1. Create variant component in `src/variants/NewVariant.tsx`
+2. Add variant type to `App.tsx` type union
+3. Add to variant detection logic in `App.tsx` useEffect
+4. Import and add to variant switch statement in render
+5. Define variant-specific colors in `tailwind.config.ts`
+6. Test with URL parameter: `?variant=new_variant`
+
+### Adding New Analytics Events
+
+1. Add event name to `EventName` type in `src/lib/analytics.ts`
+2. Call `analytics.track()` with event name and metadata
+3. Update mock implementation in `src/lib/analytics.mock.ts`
+4. Test in browser console/network tab
+
+### Modifying Database Schema
+
+1. Create new migration file in `supabase/migrations/`
+2. Use incremental naming: `002_description.sql`
+3. Include both schema changes and RLS policies
+4. Test locally with Supabase CLI: `supabase db push`
+
+### Customizing Content
+
+Edit directly in variant files:
 - `src/variants/NeoBrutalist.tsx` (EN-US)
 - `src/variants/pt-br/NeoBrutalistPTBR.tsx` (PT-BR)
 - etc.
 
-### Customizando Cores
+### Customizing Colors
 
-Editar `tailwind.config.ts`:
+Edit `tailwind.config.ts`:
 ```typescript
 colors: {
   brutalist: {
@@ -234,165 +400,165 @@ colors: {
 
 ---
 
-## Analytics
+## Environment Setup
 
-### Eventos Rastreados
-- `page_view`: Carregamento inicial da página
-- `section_view`: Quando 50%+ de uma seção está visível
-- `cta_click`: Qualquer clique em botão CTA
-- `contact_widget_open`: Widget de contato aberto
-- `contact_channel_click`: WhatsApp/Telegram/Email clicados
-- `waitlist_signup`: Email submetido para waitlist
-- `checkout_initiated`: Checkout do Stripe aberto
-- `checkout_completed`: Assinatura bem-sucedida
-- `checkout_cancelled`: Usuário retornou sem assinar
+### Environment Variables
 
-### Consultar Analytics
-
-No Supabase:
-```sql
--- CTAs mais clicados
-SELECT
-  metadata->>'button_text' as button,
-  COUNT(*) as clicks
-FROM analytics_events
-WHERE event_name = 'cta_click'
-GROUP BY button
-ORDER BY clicks DESC;
-
--- Performance de variantes
-SELECT
-  variant,
-  COUNT(DISTINCT metadata->>'session_id') as visitantes_unicos,
-  SUM(CASE WHEN event_name = 'checkout_initiated' THEN 1 ELSE 0 END) as checkouts,
-  SUM(CASE WHEN event_name = 'checkout_completed' THEN 1 ELSE 0 END) as conversoes
-FROM analytics_events
-GROUP BY variant;
-```
-
----
-
-## Persistência de Dados
-
-### Storage do App Landing
-```
-1kv-landing/
-├── .env.local                          # Variáveis de ambiente
-└── (modo mock: storage in-memory)
-```
-
-### Storage do Supabase
-- Tabela `users`: Dados de assinatura e conta
-- Tabela `waitlist`: Emails capturados antes da conversão
-- Tabela `analytics_events`: Rastreamento de interação do usuário
-
----
-
-## Deployment
-
-### Vercel (Recomendado)
+Copy `.env.example` to `.env.local`:
 
 ```bash
-# Instalar Vercel CLI
-npm install -g vercel
+# Mock Mode (for design testing without backend setup)
+VITE_USE_MOCKS=true
 
-# Deploy
-vercel
+# Supabase Configuration
+VITE_SUPABASE_URL=your_supabase_url_here
+VITE_SUPABASE_ANON_KEY=your_supabase_anon_key_here
 
-# Configurar variáveis de ambiente no dashboard Vercel
-# Deploy para produção
-vercel --prod
+# Stripe Configuration
+VITE_STRIPE_PUBLIC_KEY=your_stripe_publishable_key_here
+VITE_STRIPE_PRICE_ID=your_stripe_price_id_here
+
+# Communication Channels
+VITE_WHATSAPP_NUMBER=your_whatsapp_number_here
+VITE_TELEGRAM_CHANNEL=your_telegram_channel_here
+VITE_SUPPORT_EMAIL=support@1kvideos.com
+
+# App Configuration
+VITE_APP_VERSION=0.1.0
+VITE_EARLY_ADOPTER_PRICE=89.90
+VITE_REGULAR_PRICE=197
+VITE_CURRENCY=BRL
+VITE_EARLY_ADOPTER_DURATION=3 meses
 ```
 
-### Outras Plataformas
-- **Netlify**: `netlify deploy --prod`
-- **Cloudflare Pages**: Push para Git e configure no dashboard
-- **AWS S3 + CloudFront**: Build e upload para S3
-
-Ver [DEPLOYMENT.md](DEPLOYMENT.md) para guias completos.
+**Important:** All environment variables must be prefixed with `VITE_` and accessed via `import.meta.env`, not `process.env`.
 
 ---
 
-## Notas Importantes
+## Important Technical Details
 
-### Modo Mock vs Produção
-- **Desenvolvimento:** Sempre usa mocks (sem backend necessário)
-- **Produção:** Configura variáveis de ambiente para usar backends reais
+### TypeScript Configuration
+- Strict mode enabled with `noUnusedLocals` and `noUnusedParameters`
+- Path alias: `@/*` → `./src/*` (configured in tsconfig.json and vite.config.ts)
+- Target: ES2020 with DOM libraries
+- Module resolution: bundler (Vite-optimized)
 
-### Idiomas
-- **PT-BR:** Interface em português, preços em BRL
-- **EN-US:** Interface em inglês, preços em USD
+### Build Considerations
+- Vite performs automatic code splitting
+- React plugin includes Fast Refresh for development
+- Production builds include type checking (`tsc && vite build`)
+- All environment variables must be prefixed with `VITE_`
 
-### Cores por Variante
-- **Neo-Brutalist:** Teal (`#2DD4BF`) e Purple (`#A855F7`)
-- **Modern:** Orange (`#FF6B35`) e Purple (`#A855F7`)
-- **Production Studio:** Monochrome + Blue accent (`#3B82F6`)
+### Styling System
+- Tailwind CSS with variant-specific design tokens (`tailwind.config.ts`)
+- Custom colors, shadows, spacing scales per variant
+- Font families loaded via Google Fonts
+- Path alias `@/` for clean imports
 
-### Vídeo
-- Todas as variantes usam o mesmo vídeo do YouTube
-- Embed responsivo com aspect ratio 16:9
-- Estilização diferente por variante (bordas, sombras)
+### Mobile Responsiveness
+- Breakpoints: sm (640px), md (768px), lg (1024px), xl (1280px), 2xl (1536px)
+- Touch-friendly buttons (minimum 44px tap targets)
+- Mobile menu in variant headers
+- Contact widget repositions on mobile (bottom-center)
 
-### Preços
-- **PT-BR Early Bird:** R$ 89,90 por 3 meses → depois R$ 197/mês
-- **EN-US Early Adopter:** $20/mês → depois $49/mês
+### Video Integration
+All variants include demo video embed in Hero:
+- **URL:** `https://www.youtube.com/embed/LhzpLcKmJRY`
+- **Aspect Ratio:** 16:9 (56.25% padding-bottom)
+- **Borders:** Styled according to variant
+- **Responsive:** Works on mobile, tablet, desktop
+
+---
+
+## Common Gotchas
+
+1. **Environment variables:** Must be prefixed with `VITE_` and accessed via `import.meta.env`, not `process.env`
+
+2. **Variant switching:** Changing URL parameter requires page reload; variant is cached in localStorage
+
+3. **Analytics session:** New session ID generated on each page load; use session_id in metadata to track user journey
+
+4. **Supabase RLS:** Row-Level Security is enabled; client can only insert to waitlist and analytics_events tables
+
+5. **Stripe test mode:** Use test keys for development; test card 4242 4242 4242 4242 works for all test subscriptions
+
+6. **TypeScript strict mode:** All props must be typed; use proper typing for variant names and event metadata
+
+7. **Tailwind purging:** Only classes that appear in source files will be included in production build; avoid dynamic class construction
+
+8. **Mock mode:** Services automatically fall back to mocks if env vars missing; check console warnings to confirm which mode is active
 
 ---
 
 ## Testing
 
-### Modo Mock (Padrão)
+### Mock Mode (Default)
 ```bash
 npm run dev
-# Abre http://localhost:5173
-# Vê mensagem: "🎨 DESIGN PREVIEW MODE"
-# Todos os backends mockados
+# Opens http://localhost:5173
+# Shows message: "🎨 DESIGN PREVIEW MODE"
+# All backends mocked
 ```
 
 ### Console Commands
 ```javascript
-// Ver dados mockados
+// View mocked data
 mockData()
 
-// Verificar variante atual
+// Check current variant
 localStorage.getItem('landing_variant')
 
-// Limpar dados
+// Clear data
 localStorage.clear()
 location.reload()
 ```
 
 ---
 
-## Suporte
+## Deployment
 
-- **Email**: support@1kvideos.com
-- **Telegram**: Canal da comunidade
-- **WhatsApp Business**: Link no ContactWidget
-- **Documentação**: Ver README.md, DESIGN_TESTING.md, DEPLOYMENT.md
+### Vercel (Recommended)
+```bash
+# Install Vercel CLI
+npm install -g vercel
 
----
+# Deploy
+vercel
 
-## Roadmap
+# Configure environment variables in Vercel dashboard
+# Deploy to production
+vercel --prod
+```
 
-### Concluído ✅
-- [x] Três variantes de design (EN-US)
-- [x] Três variantes PT-BR
-- [x] Sistema de mocks completo
-- [x] Integração Stripe/Supabase
-- [x] Analytics tracking
-- [x] Embed de vídeo
-- [x] Design responsivo
-- [x] Novas cores (teal/purple, orange/purple)
+### Other Platforms
+- **Netlify:** `netlify deploy --prod`
+- **Cloudflare Pages:** Push to Git and configure in dashboard
+- **AWS S3 + CloudFront:** Build and upload to S3
 
-### Planejado 📋
-- [ ] Suporte multi-idioma (ES, FR)
-- [ ] Dashboard avançado de analytics
-- [ ] Seção de vídeos de depoimentos
-- [ ] Widget de live chat
-- [ ] Programa de referral
-- [ ] Sistema de afiliados
+See [DEPLOYMENT.md](DEPLOYMENT.md) for complete guides.
 
 ---
 
-**Criado com ❤️ para criadores de conteúdo em todo o mundo**
+## Additional Resources
+
+### Documentation Files
+- **README.md** - Project overview and setup instructions
+- **PROJECT_SUMMARY.md** - Complete project deliverables
+- **DEPLOYMENT.md** - Deployment guides for multiple platforms
+- **QUICKSTART.md** - 5-minute setup guide
+- **CHANGELOG.md** - Version history
+- **DESIGN_TESTING.md** - Design testing documentation
+- **.storybook/README.md** - Storybook design system docs
+
+### Support
+- **Email:** support@1kvideos.com
+- **Telegram:** Community channel
+- **WhatsApp Business:** Link in ContactWidget
+
+### For More Information
+Refer to `/docs/ai/` for detailed AI agent workflows and architecture documentation.
+Refer to `/docs/dev/` for comprehensive developer guides and API references.
+
+---
+
+**Built with ❤️ for content creators worldwide**
