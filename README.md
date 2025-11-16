@@ -75,11 +75,23 @@ VITE_EARLY_ADOPTER_PRICE=20
 VITE_REGULAR_PRICE=49
 ```
 
+## 🧱 Monorepo Layout
+
+This repository is now a frontend monorepo with two workspaces:
+
+- `apps/landing`: Vite-powered marketing site and Supabase/Stripe integrations.
+- `apps/storybook`: Storybook instance that consumes the shared landing components.
+
+Run all commands from the repo root so the npm workspace tooling can target the correct app (for example, `npm run dev:landing` or `npm run dev:storybook`). Any documentation references to `src/...` now map to `apps/landing/src/...` unless otherwise noted.
+
 ### Development
 
 ```bash
-# Start development server
+# Start landing page (http://localhost:5173)
 npm run dev
+
+# Start Storybook (http://localhost:6006)
+npm run storybook
 
 # Open in browser
 # Default: http://localhost:5173
@@ -91,11 +103,14 @@ npm run dev
 ### Build
 
 ```bash
-# Type check and build
+# Type check and build the landing page
 npm run build
 
 # Preview production build
 npm run preview
+
+# Build the Storybook design system
+npm run build-storybook
 ```
 
 ## 📊 Supabase Setup
@@ -169,7 +184,7 @@ Direct users to different URLs:
 - `https://yourdomain.com?variant=production_studio`
 
 ### Option 2: Client-Side Split
-Modify `src/App.tsx` to randomly assign variants:
+Modify `apps/landing/src/App.tsx` to randomly assign variants:
 
 ```typescript
 const variants = ['neo_brutalist', 'modern', 'production_studio']
@@ -185,7 +200,7 @@ Use a service like:
 
 ## 📈 Analytics
 
-Analytics are tracked automatically via `src/lib/analytics.ts`:
+Analytics are tracked automatically via `apps/landing/src/lib/analytics.ts`:
 
 ### Tracked Events
 - `page_view`: Initial page load
@@ -320,7 +335,7 @@ colors: {
 
 ### Typography
 
-Add custom fonts in `src/styles/globals.css`:
+Add custom fonts in `apps/landing/src/styles/globals.css`:
 
 ```css
 @import url('https://fonts.googleapis.com/css2?family=Your+Font&display=swap');
@@ -329,9 +344,9 @@ Add custom fonts in `src/styles/globals.css`:
 ### Content
 
 Edit content directly in variant files:
-- `src/variants/NeoBrutalist.tsx`
-- `src/variants/Modern.tsx`
-- `src/variants/ProductionStudio.tsx`
+- `apps/landing/src/variants/NeoBrutalist.tsx`
+- `apps/landing/src/variants/Modern.tsx`
+- `apps/landing/src/variants/ProductionStudio.tsx`
 
 ## 🔒 Security
 

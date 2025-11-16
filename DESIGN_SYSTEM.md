@@ -4,16 +4,13 @@ Complete design system documentation with Storybook integration for the 1000 Vid
 
 ## Quick Start
 
-### Install Storybook
-
-```bash
-cd 1kv-landing
-npm install --save-dev @storybook/react-vite @storybook/addon-links @storybook/addon-essentials @storybook/addon-interactions storybook
-```
+The landing codebase now lives inside the `apps/landing` workspace and Storybook runs from `apps/storybook`. All commands below assume you're at the repo root.
 
 ### Run Storybook
 
 ```bash
+cd 1kv-landing
+npm install
 npm run storybook
 ```
 
@@ -25,18 +22,12 @@ This opens the interactive design system documentation at `http://localhost:6006
 
 ```
 1kv-landing/
-├── .storybook/
-│   ├── main.ts                    # Storybook configuration
-│   ├── preview.ts                 # Global settings & Tailwind import
-│   └── README.md                  # Storybook documentation
-│
-└── src/
-    └── stories/
-        ├── Introduction.stories.mdx    # Welcome page
-        ├── ColorPalette.stories.tsx    # Color documentation
-        ├── Typography.stories.tsx      # Typography system
-        ├── Spacing.stories.tsx         # Spacing & shadows
-        └── Components.stories.tsx      # UI components
+├── apps/
+│   ├── landing/                    # Vite marketing site
+│   └── storybook/
+│       ├── .storybook/             # Storybook configuration
+│       └── src/
+│           └── stories/            # Color, typography, spacing & component docs
 ```
 
 ## Design Variants

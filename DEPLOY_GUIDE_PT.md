@@ -40,6 +40,7 @@ git push origin main
 
 **3. Configure o Projeto**
 
+- **Root Directory**: `apps/landing`
 - **Framework Preset**: Vite
 - **Build Command**: `npm run build`
 - **Output Directory**: `dist`
@@ -71,8 +72,8 @@ Clique em **"Deploy"** e aguarde ~2 minutos.
 # 1. Instale o Vercel CLI
 npm install -g vercel
 
-# 2. Entre na pasta do projeto
-cd 1kv-landing
+# 2. Entre na pasta do projeto e na landing
+cd 1kv-landing/apps/landing
 
 # 3. Faça login
 vercel login
@@ -108,6 +109,7 @@ Depois do deploy, acesse cada variante assim:
 2. Selecione o mesmo repositório
 3. Configure:
    - **Project Name**: `1kvideos-storybook`
+   - **Root Directory**: `apps/storybook`
    - **Build Command**: `npm run build-storybook`
    - **Output Directory**: `storybook-static`
 
@@ -115,7 +117,9 @@ Depois do deploy, acesse cada variante assim:
 
 ```bash
 npm run build-storybook
+cd apps/storybook/storybook-static
 vercel --prod
+cd ../../..
 ```
 
 ✅ Design system estará em: `https://1kvideos-storybook.vercel.app`
@@ -134,6 +138,7 @@ vercel --prod
 4. Configure:
    - **Build command**: `npm run build`
    - **Publish directory**: `dist`
+   - **Base directory**: `apps/landing`
 5. Adicione variáveis de ambiente (se necessário)
 6. Clique em **"Deploy"**
 
@@ -147,7 +152,7 @@ npm install -g netlify-cli
 netlify login
 
 # Deploy
-cd 1kv-landing
+cd 1kv-landing/apps/landing
 npm run build
 netlify deploy --prod
 ```

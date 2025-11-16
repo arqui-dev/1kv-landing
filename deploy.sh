@@ -54,7 +54,9 @@ case $choice in
 
         # Deploy
         echo -e "${BLUE}🚀 Fazendo deploy na Vercel...${NC}"
+        pushd apps/landing > /dev/null
         vercel --prod
+        popd > /dev/null
 
         echo ""
         echo -e "${GREEN}✅ Deploy concluído!${NC}"
@@ -93,7 +95,9 @@ case $choice in
 
         # Deploy
         echo -e "${BLUE}🚀 Fazendo deploy na Netlify...${NC}"
+        pushd apps/landing > /dev/null
         netlify deploy --prod
+        popd > /dev/null
 
         echo ""
         echo -e "${GREEN}✅ Deploy concluído!${NC}"
@@ -137,9 +141,9 @@ case $choice in
 
         # Deploy
         echo -e "${BLUE}🚀 Fazendo deploy do Storybook...${NC}"
-        cd storybook-static
+        pushd apps/storybook/storybook-static > /dev/null
         vercel --prod
-        cd ..
+        popd > /dev/null
 
         echo ""
         echo -e "${GREEN}✅ Deploy do Storybook concluído!${NC}"

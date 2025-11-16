@@ -14,6 +14,13 @@ Escolha a opção desejada no menu interativo.
 
 ## Deploy Manual
 
+### Estrutura do Monorepo
+
+- `apps/landing`: Projeto principal (Vite) com Supabase/Stripe.
+- `apps/storybook`: Design system em Storybook.
+
+Para deploy, sempre execute o CLI dentro da pasta do app correspondente (`apps/landing` ou `apps/storybook`).
+
 ### Vercel (Recomendado)
 
 ```bash
@@ -23,7 +30,8 @@ npm install -g vercel
 # 2. Login
 vercel login
 
-# 3. Deploy
+# 3. Deploy da landing
+cd apps/landing
 vercel --prod
 ```
 
@@ -70,7 +78,7 @@ https://seu-site.vercel.app/premium  → Premium
 npm run build-storybook
 
 # 2. Deploy
-cd storybook-static
+cd apps/storybook/storybook-static
 vercel --prod
 ```
 
