@@ -182,6 +182,9 @@ Direct users to different URLs:
 - `https://yourdomain.com?variant=neo_brutalist`
 - `https://yourdomain.com?variant=modern`
 - `https://yourdomain.com?variant=production_studio`
+- New modern/brutalist info-flow variants:
+  - `https://yourdomain.com?variant=modern_dark`
+  - `https://yourdomain.com?variant=modern_studio`
 
 ### Option 2: Client-Side Split
 Modify `apps/landing/src/App.tsx` to randomly assign variants:
@@ -190,6 +193,16 @@ Modify `apps/landing/src/App.tsx` to randomly assign variants:
 const variants = ['neo_brutalist', 'modern', 'production_studio']
 const randomVariant = variants[Math.floor(Math.random() * variants.length)]
 setVariant(randomVariant as Variant)
+```
+
+For tests that should include the modern/brutalist information flow, extend the pool:
+
+```typescript
+const variants = [
+  'modern',
+  'modern_dark',
+  'modern_studio',
+]
 ```
 
 ### Option 3: Server-Side (Recommended for Production)

@@ -1,5 +1,5 @@
 interface FooterProps {
-  variant: 'neo_brutalist' | 'modern' | 'production_studio' | 'premium'
+  variant: string
 }
 
 export function Footer({ variant }: FooterProps) {
@@ -7,17 +7,17 @@ export function Footer({ variant }: FooterProps) {
 
   const getFooterStyles = () => {
     switch (variant) {
-      case 'neo_brutalist':
-        return {
-          container: 'bg-black text-white border-t-4 border-black',
-          link: 'hover:text-brutalist-accent font-bold',
-          text: 'font-jetbrains',
-        }
-      case 'modern':
+      case 'modern_light':
         return {
           container: 'bg-gradient-to-br from-gray-50 to-white border-t border-gray-200',
           link: 'hover:text-primary transition-colors',
           text: 'text-modern-muted',
+        }
+      case 'modern_dark':
+        return {
+          container: 'bg-slate-950 border-t border-white/5',
+          link: 'hover:text-modern-amber transition-colors',
+          text: 'text-slate-300',
         }
       case 'production_studio':
         return {
@@ -30,6 +30,12 @@ export function Footer({ variant }: FooterProps) {
           container: 'bg-white border-t border-premium-indigo/10',
           link: 'hover:text-premium-indigo transition-colors',
           text: 'text-premium-muted',
+        }
+      default:
+        return {
+          container: 'bg-gradient-to-br from-gray-50 to-white border-t border-gray-200',
+          link: 'hover:text-primary transition-colors',
+          text: 'text-modern-muted',
         }
     }
   }

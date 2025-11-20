@@ -1,30 +1,28 @@
 import { useEffect, useState } from 'react'
-import { NeoBrutalist } from './variants/NeoBrutalist'
-import { Modern } from './variants/Modern'
-import { ProductionStudio } from './variants/ProductionStudio'
-import { Premium } from './variants/Premium'
-import { NeoBrutalistPTBR } from './variants/pt-br/NeoBrutalistPTBR'
-import { ModernPTBR } from './variants/pt-br/ModernPTBR'
-import { ProductionStudioPTBR } from './variants/pt-br/ProductionStudioPTBR'
+import { ModernDark } from './variants/ModernDark'
+import { ModernLight } from './variants/ModernLight'
 import { analytics } from './lib'
 import './styles/globals.css'
 
-type Variant = 'neo_brutalist' | 'modern' | 'production_studio' | 'premium' | 'neo_brutalist_ptbr' | 'modern_ptbr' | 'production_studio_ptbr'
+type Variant =
+  | 'modern_dark'
+  | 'modern_light'
 
 function App() {
-  const [variant, setVariant] = useState<Variant>('production_studio')
+  const [variant, setVariant] = useState<Variant>('modern_dark')
 
   useEffect(() => {
     // Detect variant from URL parameter or use default
     const urlParams = new URLSearchParams(window.location.search)
     const variantParam = urlParams.get('variant') as Variant
 
-    if (variantParam && ['neo_brutalist', 'modern', 'production_studio', 'premium', 'neo_brutalist_ptbr', 'modern_ptbr', 'production_studio_ptbr'].includes(variantParam)) {
+    if (variantParam && ['modern_dark', 'modern_light'].includes(variantParam)) {
       setVariant(variantParam)
       analytics.setVariant(variantParam)
     } else {
-      // Default to production_studio (recommended variant)
-      analytics.setVariant('production_studio')
+      // Default to modern_dark (chosen primary variant)
+      setVariant('modern_dark')
+      analytics.setVariant('modern_dark')
     }
 
     // Track page view
@@ -57,22 +55,12 @@ function App() {
 
   // Render the appropriate variant
   switch (variant) {
-    case 'neo_brutalist':
-      return <NeoBrutalist />
-    case 'modern':
-      return <Modern />
-    case 'production_studio':
-      return <ProductionStudio />
-    case 'premium':
-      return <Premium />
-    case 'neo_brutalist_ptbr':
-      return <NeoBrutalistPTBR />
-    case 'modern_ptbr':
-      return <ModernPTBR />
-    case 'production_studio_ptbr':
-      return <ProductionStudioPTBR />
+    case 'modern_dark':
+      return <ModernDark />
+    case 'modern_light':
+      return <ModernLight />
     default:
-      return <ProductionStudio />
+      return <ModernDark />
   }
 }
 

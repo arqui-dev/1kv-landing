@@ -7,7 +7,7 @@ const TELEGRAM_CHANNEL = import.meta.env.VITE_TELEGRAM_CHANNEL || ''
 const SUPPORT_EMAIL = import.meta.env.VITE_SUPPORT_EMAIL || 'support@1kvideos.com'
 
 interface ContactWidgetProps {
-  variant: 'neo_brutalist' | 'modern' | 'production_studio' | 'premium'
+  variant: string
 }
 
 export function ContactWidget({ variant }: ContactWidgetProps) {
@@ -32,11 +32,17 @@ export function ContactWidget({ variant }: ContactWidgetProps) {
           container: 'bg-brutalist-accent border-4 border-black shadow-brutalist',
           link: 'bg-white border-3 border-black shadow-brutalist-sm hover:bg-black hover:text-white font-bold',
         }
-      case 'modern':
+      case 'modern_light':
         return {
           button: 'bg-gradient-to-r from-modern-coral to-modern-amber text-white shadow-modern hover:shadow-modern-lg hover:scale-105',
           container: 'bg-white/90 backdrop-blur-lg shadow-modern rounded-2xl',
           link: 'bg-gradient-to-r from-primary to-modern-coral text-white rounded-xl hover:scale-105',
+        }
+      case 'modern_dark':
+        return {
+          button: 'bg-slate-900 text-white border border-white/10 shadow-modern hover:shadow-modern-lg',
+          container: 'bg-slate-900/90 backdrop-blur-xl border border-white/10 rounded-2xl shadow-modern',
+          link: 'bg-gradient-to-r from-modern-coral to-modern-amber text-white rounded-xl hover:scale-105',
         }
       case 'production_studio':
         return {
@@ -49,6 +55,12 @@ export function ContactWidget({ variant }: ContactWidgetProps) {
           button: 'bg-gradient-to-br from-premium-indigo to-premium-cyan text-white shadow-premium hover:shadow-premium-lg hover:scale-105 rounded-full',
           container: 'bg-white/90 backdrop-blur-xl shadow-premium-lg rounded-2xl border border-premium-indigo/20',
           link: 'bg-gradient-to-r from-premium-indigo to-premium-cyan text-white rounded-xl hover:scale-105 hover:shadow-premium',
+        }
+      default:
+        return {
+          button: 'bg-gradient-to-r from-modern-coral to-modern-amber text-white shadow-modern hover:shadow-modern-lg hover:scale-105',
+          container: 'bg-white/90 backdrop-blur-lg shadow-modern rounded-2xl',
+          link: 'bg-gradient-to-r from-primary to-modern-coral text-white rounded-xl hover:scale-105',
         }
     }
   }
